@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-int main(int ac, char **av)
+int main()
 {
-	(void)ac;
-	ft_printf(av[1]);
+	ft_printf("%005.5o", 5);
+	printf("%5d", 5);
 	return 0;
 }
