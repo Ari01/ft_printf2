@@ -2,7 +2,7 @@
 
 int main()
 {
-	ft_printf("%005.5o", 5);
-	printf("%5d", 5);
+	ft_printf("il etait une fois 42%5d", 5);
+	printf("il etait une fois 42%5d", 5);
 	return 0;
 }

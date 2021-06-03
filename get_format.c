@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 17:38:49 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/03 17:43:34 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/03 18:06:49 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int			is_specifier(char c)
 int			get_format(char *s, t_format *format, va_list ap)
 {
 	*format = init_format();
-	while (*s && *s != '%')
-		s += 1;
 	if (*s == '%')
 	{
 		s += 1;
