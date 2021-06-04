@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 17:40:02 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/03 17:43:32 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/04 12:59:44 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ t_format	get_precision(t_format format, char **s, va_list ap)
 		else if (**s == '*')
 		{
 			format.precision = va_arg(ap, int);
-			if (format.precision < 0)
-				format.precision = 0;
 			*s += 1;
 		}
+		else
+			format.precision = 0;
 	}
 	return (format);
 }

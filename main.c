@@ -2,7 +2,8 @@
 
 int main()
 {
-	ft_printf("il etait une fois 42%5d", 5);
-	printf("il etait une fois 42%5d", 5);
+	int a = 5;
+	ft_printf("il etait une fois %p\n", &a);
+	printf("il etait une fois %p\n", &a);
 	return 0;
 }
