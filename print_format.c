@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 10:06:40 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/04 16:44:52 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/04 17:23:27 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_value(t_format format, va_list ap)
 	if (format.specifier == 'd' || format.specifier == 'i')
 		value = ft_itoa(va_arg(ap, int));
 	if (format.specifier == 'u')
-		value = convert_u(va_arg(ap, unsigned long));
+		value = convert_u(va_arg(ap, unsigned int));
 	if (format.specifier == 'x')
 		value = convert_base(va_arg(ap, unsigned long), "0123456789abcdef");
 	if (format.specifier == 'X')
@@ -50,9 +50,6 @@ int		print_zero(t_format format, int len)
 	nzero = 0;
 	if (format.zero || format.precision)
 	{
-		/*if (format.precision < 0
-			|| !is_in_charset(format.specifier, NUMERIC_CHARSET))
-		{*/
 		if (format.precision > len)
 			nzero = format.precision - len;
 		else if (format.width > len)
@@ -63,9 +60,7 @@ int		print_zero(t_format format, int len)
 			ft_memset(zero, '0', nzero);
 			zero[nzero] = 0;
 			ft_putstr_fd(zero, STDOUT_FILENO);
-			return (nzero);
 		}
-		//}
 	}
 	return (nzero);
 }
@@ -85,10 +80,9 @@ int		print_spaces(t_format format, int len)
 			ft_memset(spaces, ' ', nspaces);
 			spaces[nspaces] = 0;
 			ft_putstr_fd(spaces, STDOUT_FILENO);
-			return (nspaces);
 		}
 	}
-	return (0);
+	return (nspaces);
 }
 
 int		print_format(t_format format, va_list ap)
@@ -103,6 +97,7 @@ int		print_format(t_format format, va_list ap)
 	if (!format.minus)
 		bytes_written += print_spaces(format, bytes_written + len);
 	ft_putstr_fd(value, STDOUT_FILENO);
+	bytes_written += len;
 	if (format.minus)
 		bytes_written += print_spaces(format, bytes_written + len);
 	return (bytes_written);

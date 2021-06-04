@@ -38,7 +38,7 @@ int			is_in_charset(char c, const char *charset);
 int			ft_printf(const char *format, ...) __attribute__ ((format(printf, 1, 2)));
 char		*get_value(t_format format, va_list ap);
 int			print_format(t_format format, va_list ap);
-char		*convert_u(unsigned long n);
+char		*convert_u(unsigned int n);
 char		*convert_base(unsigned long n, char *base);
 char		*convert_p(void *adr);
 

@@ -6,7 +6,7 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 15:31:14 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/04 16:35:18 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/04 17:24:14 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	nblen(unsigned int n)
 }
 
 
-char		*convert_u(unsigned long n)
+char		*convert_u(unsigned int n)
 {
 	char	*conversion;
 	int		len;

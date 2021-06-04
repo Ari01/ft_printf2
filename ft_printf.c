@@ -6,19 +6,22 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:16:10 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/04 15:19:53 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/04 17:21:11 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_string(const char *s, int start, char *ite)
+int		print_string(const char *s, int start, char *ite)
 {
 	char	*string;
+	int		len;
 
-	string = ft_substr(s, start, ite - &s[start]);
+	len = ite - &s[start];
+	string = ft_substr(s, start, len);
 	ft_putstr_fd(string, STDOUT_FILENO);
 	free(string);
+	return (len);
 }
 
 int		ft_printf(const char *s, ...)
@@ -26,23 +29,26 @@ int		ft_printf(const char *s, ...)
 	va_list		ap;
 	t_format	format;
 	int			start;
+	int			bytes_written;
 	char		*ite;
 
 	va_start(ap, s);
 	ite = (char *)s;
 	start = 0;
+	bytes_written = 0;
 	while (*ite)
 	{
 		while (*ite && *ite != '%')
 			ite++;
-		print_string(s, start, ite);
+		bytes_written += print_string(s, start, ite);
 		if (*ite == '%')
+		{
 			ite++;
-		if (!get_format(&ite, &format, ap))
-			return (-1);
-		print_format(format, ap);
+			if (!get_format(&ite, &format, ap))
+				return (-1);
+			bytes_written += print_format(format, ap);
+		}
 		start = ite - s;
-		//return (print_format(format, ap));
 	}
-	return (1);
+	return (bytes_written);
 }
