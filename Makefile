@@ -14,6 +14,7 @@ LIBFTOBJS = libft/*.o
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -L libft -lft
+LIB = -L. -lftprintf
 INCLUDE = libft
 
 # RULES
@@ -22,6 +23,9 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			cd libft && $(MAKE) $(BONUS)
 			ar cr $@ $(LIBFTOBJS) $(OBJS)
+
+test:		$(NAME)
+			$(CC) $(CFLAGS) main.c -o $@ $(LIB)
 
 .c.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

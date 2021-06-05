@@ -6,13 +6,13 @@
 /*   By: dchheang <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 15:42:36 by dchheang          #+#    #+#             */
-/*   Updated: 2021/06/04 16:39:03 by dchheang         ###   ########.fr       */
+/*   Updated: 2021/06/05 12:26:20 by dchheang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	nblen(unsigned long n, int baselen)
+static int	nblen(unsigned int n, int baselen)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ static int	nblen(unsigned long n, int baselen)
 	return (i);
 }
 
-char		*convert_base(unsigned long n, char *base)
+char		*convert_base(unsigned int n, char *base)
 {
 	char	*conversion;
 	int		len;
